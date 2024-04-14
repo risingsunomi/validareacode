@@ -132,10 +132,14 @@ FOLLOW THIS EXAMPLE'S FORMAT
                 zip_json_data = {}
 
             if zip_json_data:
-                ciu = zip_json_data["general_information"]["code_in_use"]
+                gen_info = zip_json_data["general_information"]
+                geo_info = zip_json_data["geographic_information"]
+
+
+                ciu = gen_info["code_in_use"]
                 code_used = False if ciu == "N" or ciu == "No" else True
-                code_location = zip_json_data["general_information"]["location"]
-                code_country = zip_json_data["general_information"]["country"]
+                code_location = geo_info["location"] if geo_info["location"] else ""
+                code_country = geo_info["country"] if geo_info["country"] else ""
 
         except Exception as err:
             logging.error(f"OPENAI API error: {err}")
@@ -164,9 +168,9 @@ def main():
                     navigate_to_search_page(driver)
                     ac_valid, ac_loc, ac_country = search_area_code(driver, area_code)
                     if ac_valid:
-                        used_areacodes.append(
-                            [area_code, ac_loc, ac_country]
-                        )
+                        ac_info = [area_code, ac_loc, ac_country]
+                        logging.info(f"Adding ac_info: {ac_info}")
+                        used_areacodes.append(ac_info)
                 except Exception as err:
                     logging.error(err)
                     logging.info("Sleeping 60 seconds...")
@@ -174,6 +178,10 @@ def main():
 
                 logging.info("Sleeping 10 seconds...")
                 time.sleep(10)
+
+    logging.info(f"{len(used_areacodes)-1} valid area codes found")
+
+    # export to CSV
 
     driver.quit()
 
