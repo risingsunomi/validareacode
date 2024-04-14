@@ -8,7 +8,7 @@ A project to create a valid area code database and library. Focused not on using
 
 Using serenium and having gpt-3.5-turbo parse the website's html, create a JSON that would have the needed valid area code information. This included if it is in use, the location and the country.
 
-Area Code search is defined by range of the (North American Numbering Plan)[https://www.nationalnanpa.com/about_us/index.html] and is done through (NANPA)[https://www.nationalnanpa.com/index.html]
+Area Code search is defined by range of the [North American Numbering Plan](https://www.nationalnanpa.com/about_us/index.html) and is done through [NANPA](https://www.nationalnanpa.com/index.html)
 
 LLM is not really required as could just parse through the website date but was done as an experiment. If the website layout from NANPA were to change, the build_areacodes.py wouldn't break if not tied to a certain layout but parsed by an LLM. Will try to add an LLM free option.
 
