@@ -12,6 +12,8 @@ Area Code search is defined by range of the [North American Numbering Plan](http
 
 LLM is not really required as could just parse through the website date but was done as an experiment. If the website layout from NANPA were to change, the build_areacodes.py wouldn't break if not tied to a certain layout but parsed by an LLM. Will try to add an LLM free option.
 
+![LLM Run](assets/llm_run.png)
+
 The way serenium is being used now might not work on other sites with more security. The NANPA search seems like an old JSP application that doesn't mind it.
 
 ![NANPA JSP App](assets/oldjsp.png)
