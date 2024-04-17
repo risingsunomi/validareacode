@@ -217,7 +217,7 @@ def update_to_db(ac_info: tuple):
         sqlcur = sqlcon.cursor()
 
         sqlcur.execute(f"""
-        UPDATE area_codes SET
+        UPDATE area_code SET
             location='{ac_info[1]}',
             country='{ac_info[2]}',
             assignable={1 if ac_info[3] else 0},
